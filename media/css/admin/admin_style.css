@@ -1,0 +1,565 @@
+/* ------------------------------------------------------------------ */
+/* Глобальные стили */
+body{
+	margin: 0px;
+	padding: 0px;
+	background: #f3f3f3;
+}
+
+*{
+	font-family:Helvetica,Arial;
+	font-weight: lighter;
+	color: #666;
+	font-size: 14px;
+	line-height: 140%;
+}
+
+img{
+	border: 0px !important;
+}
+
+table{
+	border:0px;
+	border-collapse:collapse;
+}
+
+table td{
+	padding:0px;
+}
+
+a{
+	text-decoration: none;
+	cursor: pointer;
+	border-bottom: 1px dotted #666;
+}
+
+a:hover{
+	text-decoration: none;
+	border-bottom: 0px;
+}
+
+h3{
+	font-size: 16px;
+	margin: 5px 0px 5px 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+.clr{
+	clear: both;
+}
+/* ------------------------------------------------------------------ */
+/* Стиль для таблицы сожержащей основной контент */
+#main_table{
+	width: 100%;
+}
+
+#main_table td{
+	vertical-align: top;
+	position: relative;
+}
+
+#main_table tr td.left_column{
+	width: 224px;
+	background: url(../../images/admin/left_column_bg.jpg);
+}
+
+#main_content{
+	padding: 0px 20px 0px 20px;
+}
+
+#right_column{
+	width: 250px;
+	padding: 0px 20px 0px 0px;
+}
+/* ------------------------------------------------------------------ */
+#admin_logo{
+	background: url(../../images/admin/admin_logo.jpg) no-repeat;
+	border-bottom: 0px;
+	//margin: 20px 10px;
+	width: 200px;
+	height: 170px;
+	display: block;
+}
+/* ------------------------------------------------------------------ */
+/* Меню */
+ul#menu{
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 220px;
+}
+
+ul#menu li{
+	margin-top: 2px;
+	position: relative;
+	cursor: pointer;
+}
+
+ul#menu li.has_submenu ul{
+	display: none;
+}
+
+ul#menu li.has_submenu.open ul{
+	display: block;
+}
+
+ul#menu li div{
+	margin-top: 2px;
+	background: url(../../images/admin/menu_el_bg.jpg);
+	height: 27px;
+	padding: 10px 10px 0px 30px;
+	border-bottom: 1px solid #d3d3d3;
+	cursor: pointer;
+}
+
+ul#menu li ul.submenu{
+	list-style-type: none; 
+	margin: 0px 0px 0px 20px; 
+	padding: 0; 
+	width: 200px;
+}
+
+ul#menu li ul.submenu div{
+	margin-top: 0px;
+	background: none;
+	height: 27px;
+	padding: 10px 10px 0px 10px;
+	border-bottom: 1px dotted #666;
+}
+
+ul#menu li ul.submenu div:hover, ul#menu li ul.submenu div.active{
+	background: #efefef;
+}
+
+ul#menu li.has_submenu span.sub_selector{
+	background: url(../../images/admin/menu_open.jpg) no-repeat left top;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 14px;
+	top: 13px;
+}
+
+ul#menu li.has_submenu.open span.sub_selector{
+	background: url(../../images/admin/menu_close.jpg) no-repeat left top;
+}
+/* ------------------------------------------------------------------ */
+#lang_container{
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	z-index: 999;
+}
+
+#lang_container a{
+	border: 0px;
+	margin-right: 5px;
+}
+
+#lang_container a.active span{
+	font-weight: bold;
+	border-bottom: 1px dotted #666;
+}
+
+#hi_container{
+	position: absolute;
+	right: 20px;
+	top: 40px;
+	text-align: right;
+	z-index: 100;
+}
+
+#hi_container span{
+	font-weight: bold;
+}
+
+#hi_container a{
+	top: 30px;
+	right: 0px;
+	position: absolute;
+}
+/* ------------------------------------------------------------------ */
+.heade_table{
+	width: 100%;
+	border-top: 1px solid #d2d2d2;
+	border-left: 1px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
+	height: 60px;
+	background: url(../../images/admin/content_header.jpg);
+}
+
+.heade_table tr td{
+	font-size: 18px;
+	padding-top: 15px;
+}
+
+.white_container{
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #d3d3d3;
+}
+/* ------------------------------------------------------------------ */
+ul.element_list{
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0px 15px 0px 15px; 
+	border: 1px solid #d2d2d2;
+	background: #fff;
+}
+
+ul.element_list li ul.element_list{
+	margin-left: 20px;
+	border: 0px;
+	padding: 0px 0px 0px 15px; 
+}
+
+ul.element_list li div{
+	padding: 10px 5px 10px 5px;
+	border-bottom: 1px dotted #d3d3d3;
+}
+
+ul.element_list li div:hover{
+	background: #f6f6f6;
+}
+
+ul.element_list li div table{
+	width: 100%;
+}
+
+ul.element_list li div span{
+	float: left;
+}
+
+.center{
+}
+
+.ul-li-moved{
+	border: 1px solid #d3d3d3;
+	background: #e9e9e9;
+	height: 41px;
+}
+/* ------------------------------------------------------------------ */
+/* Текстовое поле */
+.input_text_field{
+	width: 95%;
+	margin-bottom: 20px;
+}
+
+.input_text_field td.input_text_field_descr{
+	width: 180px;
+	padding: 0px 10px 0px 0px;
+	font-size: 16px;
+}
+
+.input_text_field td.input_text_field_field{
+	background: url(../../images/admin/text_field.jpg) no-repeat left top;
+	padding-left: 10px;
+}
+
+.input_text_field td.input_text_field_field input{
+	background: url(../../images/admin/text_field.jpg) no-repeat right top;
+	padding-right: 10px;
+	border: 0px;
+	width: 100%;
+	height: 31px;
+}
+
+.input_text_field td.input_text_field_field.error input{
+	background: url(../../images/admin/text_field_error.jpg) no-repeat right bottom;
+}
+
+.input_text_field td.input_text_field_field.error{
+	background: url(../../images/admin/text_field_error.jpg) no-repeat left bottom;
+}
+
+.input_text_field td.input_text_field_textarea{
+}
+
+td.input_text_field_textarea div input {
+	opacity: 0;
+	position: absolute; 
+	left: 0px; 
+	top: 1px; 
+	width: 126px;
+}
+
+.input_text_field td.input_text_field_textarea textarea{
+	padding: 10px;
+	width: 98%;
+	height: 100px;
+	border: 1px solid #DCDCDC;
+}
+
+.input_text_field td.input_text_field_textarea.error textarea{
+	border: 1px solid #ff0000;
+}
+
+.textarea_descr{
+	font-size: 16px;
+    padding: 5px 10px 0 0;
+    width: 180px;
+	margin-bottom: 10px;
+}
+
+button{
+	height: 33px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.textarea_descr{
+	margin-bottom: 20px;
+}
+
+.tw_ot{
+	height: 20px;
+}
+
+.save_btn_container{
+	text-align: right;
+}
+/* ------------------------------------------------------------------ */
+.top_msg{
+	top: 10px;
+	position: absolute;
+	width: 400px;
+	left: 50%;
+	margin-left: -200px;
+	padding: 15px;
+	font-size: 16px;
+	text-align: center;
+	z-index: 999;
+}
+
+.top_msg.red{
+	background: red;
+	color: #fff;
+}
+
+.top_msg.green{
+	background: green;
+	color: #fff;
+	z-index: 999;
+}
+
+.close_top_msg{
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 10px;
+	height: 10px;
+	background: url(../../images/admin/ui-icons_454545_256x240.png) -99px -131px;
+	cursor: pointer;
+}
+/* ------------------------------------------------------------------ */
+.right_align_container{
+	margin-top: 60px;
+	margin-bottom: 25px;
+	text-align: right;
+}.right_align_container.start {
+	margin-top: 160px;
+}
+
+.left_align_container{
+	margin-top: 60px;
+	margin-bottom: 25px;
+	text-align: left;
+}.left_align_container.start {
+	margin-top: 160px;
+}
+
+.change_status, .delete_element{
+	cursor: pointer;
+}
+
+.input_file_hidden{
+	opacity: 0;
+	position: absolute; 
+	left: 0px; 
+	top: 1px; 
+	width: 126px;
+}
+
+.new_add_file_container div{
+	margin-top: 5px;
+}
+
+i{
+	font-size: 10px;
+	color: #999;
+}
+/* ------------------------------------------------------------------ */
+
+/*
+
+ul{
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 300px;
+}
+
+ul li{
+	margin: 0 5px 5px 5px; 
+	padding: 5px; 
+	font-size: 12px; 
+	background: #999;
+	border: 1px solid #666;
+}
+
+ul li.ul-li-moved{
+	background: #666;
+}
+
+ul li ul{
+	margin-left: 20px;
+} */
+
+/* ------------------------------------------------------------------ */
+/* Текстовые поля */
+.text_field_cont	{
+	padding: 10px 10px 20px 10px;
+}
+
+.text_field_name	{
+	float:left;
+	width: 200px;
+	font-size: 16px;
+}
+
+.text_field_text	{
+	padding-left: 200px;
+	font-size: 16px;
+}
+
+.hasDatepicker {
+	z-index: 101;
+}
+
+/* Модуль Quiz для Watsons*/
+/* 4.11.2011 */
+/* ---------------------------------------------------- */
+#quiz_res{
+	font-size: 16px;
+	margin-bottom:20px;
+}
+.quiz_container{
+	font-size: 14px;
+	width: 500px;
+	margin-bottom:10px;
+}
+.quiz_head	{
+	clear: both;
+}
+.quiz_ans_title{
+
+}
+.quiz_scorer	{
+	float: left;
+	margin-right: 5px;
+}
+.quiz_delimiter	{
+	height: 1px;
+	background-color: #666666;
+	width: 500px;
+	clear:both;
+	margin-bottom: 20px;
+}
+.quiz_width{
+	background-color: #666666;
+	margin-top: 5px;
+	height: 5px;
+	float: left;
+}
+.quiz_width_small{
+	font-size: 14px;
+	float: right;
+	color: #666666;
+	margin: 0px 0px 5px 0px;
+}
+.quiz_all{
+	width: 500px;
+	padding-bottom: 30px;
+}
+.quiz_all #quiz_tit {
+	float: left;
+	font-size: 16px;
+}
+.quiz_all #quiz_sc {
+	font-size: 14px;
+	float: right;
+	color: #666666;
+}
+/* ------------------------------------------------------------------ */
+.delimiter	{
+	height: 1px;
+	background-color: #666666;
+	width: 95%;
+	clear:both;
+	margin-bottom: 20px;
+}
+
+.sortable_bg {
+	background-color: #fff;
+	list-style-type: none;
+}
+.sortable_bg .title_for_add_fields{
+	font-size: 16px;
+    margin-bottom: 10px;
+    padding: 5px 10px 0 0;
+    width: 100%;
+}
+
+.add_field_save_position {
+	margin: 20px 0px;
+}
+/* ------------------------------------------------------------------ */
+.upload_file {
+	margin-right: 30px;
+}
+/* ------------------------------------------------------------------ */
+.show_somes_tpl {
+	padding: 25px 0 0 0;
+	list-style-type: none;
+}
+.show_somes_tpl li.img_tr {
+	clear: both;
+	height: 100px;
+}
+.show_somes_tpl li.img_tr div, .show_somes_tpl tr td  {
+	padding: 5px 40px 5px 0px;
+	float: left;
+	width: 150px;
+}
+div.header_table div, .show_somes_tpl tr.header_table td {
+	padding: 5px 40px 5px 0px;
+	font-weight: bold;
+	float: left;
+	width: 150px;
+}
+/* ------------------ Шаблон добавление файлов ------------------------------------------------ */
+.show_img_rules {
+	margin: 30px 0px 10px 0px;
+}
+.show_img_rules a {
+	margin-right: 30px;
+}
+#show_img_miniatures {
+	
+}
+#show_img_text {
+	
+}
+.checkbox_upload_img {
+	opacity: 1!important; 
+	position: relative!important;
+	width: 30px!important; 
+	margin: 0 35%;
+}
+/* ------------------------------------------------------------------ */
+
+
+/* ------------------ Вывод ошибок ------------------------------------------------ */
+.ci_error_msg p{
+	color: red;
+}

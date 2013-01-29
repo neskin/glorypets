@@ -1,0 +1,1 @@
+<? inc_editor("test_editor_name", "", "Эдитор тест"); ?>
