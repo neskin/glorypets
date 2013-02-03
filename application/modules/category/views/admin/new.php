@@ -6,8 +6,8 @@
 ))?>
 <div class="white_container">
 	<form method="post" name="form" action="<?=HOSTADMIN?>category/newitem/<?=$type?>/" enctype="multipart/form-data">		
-		<?inc_text($type."_category_name", $this->input->post($type.'_category_name'), "need", "Название")?>
-		<?inc_textarea($type."_category_text", $this->input->post($type.'_category_text'), "", "Описание")?>
+		<?inc_text($type."category_name", $this->input->post($type.'category_name'), "need", "Название")?>
+		<?inc_textarea($type."category_text", $this->input->post($type.'category_text'), "", "Описание")?>
 		<?inc_btn("submit", "Сохранить", "submit_form", 1)?>
 	</form>
 </div>

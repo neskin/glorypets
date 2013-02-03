@@ -5,9 +5,9 @@
 	array('Редактировать запись')
 ))?>
 <div class="white_container">
-	<form method="post" name="form" action="<?=HOSTADMIN?>category/edititem/<?=$type?>/<?=$single[$type.'_category_id']?>/" enctype="multipart/form-data">
-		<? inc_text($type."_category_name", $single[$type.'_category_name'], "need", "Имя")?>
-		<? inc_textarea($type."_category_text", $single[$type.'_category_text'], "", "Описание")?>
+	<form method="post" name="form" action="<?=HOSTADMIN?>category/edititem/<?=$type?>/<?=$single[$type.'category_id']?>/" enctype="multipart/form-data">
+		<? inc_text($type."category_name", $single[$type.'category_name'], "need", "Имя")?>
+		<? inc_textarea($type."category_text", $single[$type.'category_text'], "", "Описание")?>
 		<? inc_btn("submit", "Сохранить", "submit_form", 1)?>
 	</form>
 </div>

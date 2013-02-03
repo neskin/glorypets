@@ -4,14 +4,14 @@ class Admin extends Adminbase {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('category_model');
+		$this->load->model('character_model');
 	}
 	
-	public function catlist($type = '') {
+	public function charlist($type = '') {
 		if($type == '') {
 			$this->show_404();
 		}
-		$data['list'] = $this->category_model->get_list($type);
+		$data['list'] = $this->character_model->get_list($type);
 		$data['type'] = $type;
 		$this->_render('admin/list', $data);
 	}
@@ -20,10 +20,10 @@ class Admin extends Adminbase {
 		if($type == '') {
 			$this->session->set_userdata('admin_msg', 'not_save');
 			$_POST['submit'] = 0;
-			redirect(HOSTADMIN.'category/catlist/'.$type);
+			redirect(HOSTADMIN.'character/charlist/'.$type);
 		}
 		
-		$this->form_validation->set_rules($type.'category_name', 'Name', 'trim|required|min_length[3]|xss_clean');
+		$this->form_validation->set_rules($type.'character_name', 'Name', 'trim|required|min_length[2]|xss_clean');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$_POST['submit'] = 0;
@@ -38,14 +38,14 @@ class Admin extends Adminbase {
 		if($id == null || !is_numeric($id) || $type == '') {
 			$this->session->set_userdata('admin_msg', 'not_save');
 			$_POST['submit'] = 0;
-			redirect(HOSTADMIN.'category/catlist/'.$type);
+			redirect(HOSTADMIN.'character/charlist/'.$type);
 		}
 		
-		$this->form_validation->set_rules($type.'category_name', 'Name', 'trim|required|min_length[3]|xss_clean');
+		$this->form_validation->set_rules($type.'character_name', 'Name', 'trim|required|min_length[2]|xss_clean');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$_POST['submit'] = 0;
-			$data['single'] = $this->category_model->get_single($type, $id);
+			$data['single'] = $this->character_model->get_single($type, $id);
 			$data['type'] = $type;
 			$this->_render('admin/edit', $data);
 		} else {
@@ -54,12 +54,12 @@ class Admin extends Adminbase {
 	}
 		
 	private function _save($type) {
-		$this->category_model->save($type);
-		redirect(HOSTADMIN.'category/catlist/'.$type);
+		$this->character_model->save($type);
+		redirect(HOSTADMIN.'character/charlist/'.$type);
 	}
 	
 	private function _update($type, $id) {
-		$this->category_model->update($type, $id);
-		redirect(HOSTADMIN.'category/catlist/'.$type);
+		$this->character_model->update($type, $id);
+		redirect(HOSTADMIN.'character/charlist/'.$type);
 	}
 }

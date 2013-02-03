@@ -18,10 +18,10 @@ class Category_model extends Modelbase {
 		//$rows = $this->db->get($table, $number);
 		//$rows = $rows->row_array();
 		
-		$sql 	= "SELECT * FROM `".$type."_category` 
-					WHERE `".$type."_category_status` != ? 
-					GROUP BY `".$type."_category_id`
-					ORDER BY `".$type."_category_id` DESC";		
+		$sql 	= "SELECT * FROM `".$type."category` 
+					WHERE `".$type."category_status` != ? 
+					GROUP BY `".$type."category_id`
+					ORDER BY `".$type."category_id` DESC";		
 		$rows = $this->db->query($sql, array('-1'));
 		return $rows->result_array();
 	}
@@ -30,11 +30,11 @@ class Category_model extends Modelbase {
 	
 	public function get_single($type, $id) {
 
-		$sql 	= "SELECT * FROM `".$type."_category` 
-					WHERE `".$type."_category_status` != ? 
-					AND `".$type."_category_id` = ? 
-					GROUP BY `".$type."_category_id`
-					ORDER BY `".$type."_category_id` DESC
+		$sql 	= "SELECT * FROM `".$type."category` 
+					WHERE `".$type."category_status` != ? 
+					AND `".$type."category_id` = ? 
+					GROUP BY `".$type."category_id`
+					ORDER BY `".$type."category_id` DESC
 					LIMIT 1";	
 		$rows = $this->db->query($sql, array('-1', $id));
 		return $rows->row_array();
@@ -45,9 +45,9 @@ class Category_model extends Modelbase {
 		
 		// Save news --------------------------------------------- >
 		//
-		$f  = array($type.'_category_name', $type.'_category_text');
+		$f  = array($type.'category_name', $type.'category_text');
 		$dv = array();
-		$n  = array($type.'_category_name');
+		$n  = array($type.'category_name');
 		$ar = mafg($f, $dv, $n);
 		if($ar == false) {
 			$this->session->set_newsdata('admin_msg', 'not_save');
@@ -55,11 +55,11 @@ class Category_model extends Modelbase {
 			redirect(HOSTADMIN.'category/edititem/'.$type.'/'.$id.'/');
 		}
 		
-		$ar[$type.'_category_name'] 		= addslashes(strip_tags($ar[$type.'_category_name']));
-		$ar[$type.'_category_text'] 		= addslashes(strip_tags($ar[$type.'_category_text']));
+		$ar[$type.'category_name'] 		= addslashes(strip_tags($ar[$type.'category_name']));
+		$ar[$type.'category_text'] 		= addslashes(strip_tags($ar[$type.'category_text']));
 
 		$ar 	= sp_k_v($ar);
-		$sql 	= "UPDATE `".$type."_category` SET ".implode(", ", $ar)." WHERE `".$type."_category_id` = $id";
+		$sql 	= "UPDATE `".$type."category` SET ".implode(", ", $ar)." WHERE `".$type."category_id` = $id";
 		$this->db->query($sql);
 		
 		/*
@@ -71,21 +71,21 @@ class Category_model extends Modelbase {
 	
 	
 	public function save($type) {
-		$id = $this->get_value($type.'_category', $type.'_category_id', '`'.$type.'_category_id` DESC');
+		$id = $this->get_value($type.'category', $type.'category_id', '`'.$type.'category_id` DESC');
 		if(empty($id))	
 			$id = 0;
 		$id ++;
 		
-		$pos = $this->get_value($type.'_category', $type.'_category_position', '`'.$type.'_category_position` DESC');
+		$pos = $this->get_value($type.'category', $type.'category_position', '`'.$type.'category_position` DESC');
 		if(empty($pos))	
 			$pos = 0;
 		$pos ++;
 		
 		// ---------------------------------------------------------------------- >
 		//
-		$f  = array($type.'_category_id', $type.'_category_name', $type.'_category_position', $type.'_category_text', $type.'_category_status');
-		$dv = array($type.'_category_id'=>$id, $type.'_category_position'=>$pos, $type.'_category_status'=>1);
-		$n  = array($type.'_category_name');
+		$f  = array($type.'category_id', $type.'category_name', $type.'category_position', $type.'category_text', $type.'category_status');
+		$dv = array($type.'category_id'=>$id, $type.'category_position'=>$pos, $type.'category_status'=>1);
+		$n  = array($type.'category_name');
 		$ar = mafg($f, $dv, $n);
 		if($ar == false){
 			echo $id; die();
@@ -94,14 +94,14 @@ class Category_model extends Modelbase {
 			redirect(HOSTADMIN.'category/newitem/'.$type);
 		}
 
-		$ar[$type.'_category_name'] 		= addslashes(strip_tags($ar[$type.'_category_name']));
-		$ar[$type.'_category_text'] 		= addslashes(strip_tags($ar[$type.'_category_text']));
+		$ar[$type.'category_name'] 		= addslashes(strip_tags($ar[$type.'category_name']));
+		$ar[$type.'category_text'] 		= addslashes(strip_tags($ar[$type.'category_text']));
 		
 		$f  = ekr($f, "`"); 
 		$ar = ekr($ar, "'"); 
 		
 		//foreach($GLOBALS['langs_list'] as $v) {
-			$sql 	= "INSERT INTO `".$type."_category` (".implode(", ", $f).") VALUES (".implode(", ", $ar).")";
+			$sql 	= "INSERT INTO `".$type."category` (".implode(", ", $f).") VALUES (".implode(", ", $ar).")";
 			$this->db->query($sql);
 		//}
 		

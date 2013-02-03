@@ -1,5 +1,4 @@
 <?php
-
 class News_model extends Modelbase {
 
 	//private $tables = array('news', 'newsinfo', 'news_newsgroup_synh');
@@ -47,9 +46,9 @@ class News_model extends Modelbase {
 		$result = array();
 		$limit = 3;
 		$current = getDate(time()); 
-       	$today = time() - (($current['hours']*3600)+($current['minutes']*60)+$current['seconds']);	// начало этого дня!
-       	$yesteday = $today - 86400;
-       	$befyesteday =  $today - 86400*2;
+                $today = time() - (($current['hours']*3600)+($current['minutes']*60)+$current['seconds']);	// начало этого дня!
+                $yesteday = $today - 86400;
+                $befyesteday =  $today - 86400*2;
 		
 		$sql 	= "SELECT `news_name`, `news_id` FROM `news` 
 					WHERE `news_status` = ?
@@ -94,10 +93,32 @@ class News_model extends Modelbase {
 		return $result;
 	}
 	
-	
-	
-	
-	
+        // Vote fot rhe news (1 = good, 0 = bad)
+        //
+	public function setrate($id, $uid, $rate) {
+                $res = 0;
+                $sql = "INSERT INTO `news_user_rate_synh` 
+                        (`synh_news_id`, `synh_user_id`, `synh_rate`)
+                        VALUES (?, ?, ?)
+                    ";
+                if($this->db->query($sql, array($id, $uid, $rate))) {
+                    $res = $id;
+                    if($rate == 0)
+                        $this->increment_news_value($id, 'news_bad');
+                    else
+                        $this->increment_news_value($id, 'news_good');
+                }
+                        
+                return $res;
+        }
+        
+        
+        public function increment_news_value($id, $field) {
+                $sql 	= "UPDATE `news` 
+                            SET `$field` = `$field` + 1 
+                            WHERE `news_id` = ? ";
+		$this->db->query($sql, array($id));
+        }
 	
 	// < ------------------ Back End ------------------ > //
 	

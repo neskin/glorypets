@@ -1,30 +1,13 @@
 <?php
 
-class Glossary_model extends Modelbase {
+class Mapping_model extends Modelbase {
 
-	//private $tables = array('glossary', 'glossaryinfo', 'glossary_glossarygroup_synh');
-	
 	public function __construct() {
 		parent::__construct();
 	}
 	
 	// < ------------------ Front End ------------------ > //
-	public function get_glossary($limit_old = 0) {
-		//$rows = $this->db->get($table, $number);
-		//$rows = $rows->row_array();
-		if($limit_old == 0)
-			$limit = 15;
-		else
-			$limit = 3;
-		
-		$sql 	= "SELECT * FROM `glossary` 
-					WHERE `glossary_status` = ? 
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC
-					LIMIT $limit_old, $limit";		
-		$rows = $this->db->query($sql, array(1));
-		return $rows->result_array();
-	}
+	
 	
 	public function get_block_glossary() {
 		//$rows = $this->db->get($table, $number);
@@ -55,17 +38,24 @@ class Glossary_model extends Modelbase {
 		//$rows = $this->db->get($table, $number);
 		//$rows = $rows->row_array();
 		
-		$sql 	= "SELECT * FROM `glossary` 
-					LEFT JOIN `glossarycategory` ON `glossary_catid` = `glossarycategory_id` 
-					WHERE `glossary_status` != ? 
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC";		
+		$sql 	= "SELECT * FROM `glossarymapping` 
+					LEFT JOIN `glossary` ON `glossarymapping_gid` = `glossary_id` 
+					WHERE `glossarymapping_status` != ? 
+					ORDER BY `glossary_name` ASC, `glossarymapping_id` DESC";		
 		$rows = $this->db->query($sql, array('-1'));
 		return $rows->result_array();
 	}
 	
+	public function get_glossary() {
+		$sql 	= "SELECT * FROM `glossary` 
+                            WHERE `glossary_status` = ? 
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC";		
+		$rows = $this->db->query($sql, array(1));
+		return $rows->result_array();
+	}
 	
-	
+        
 	public function get_single($id) {
 
 		$sql 	= "SELECT * FROM `glossary` 
