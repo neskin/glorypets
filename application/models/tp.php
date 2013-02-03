@@ -19,7 +19,7 @@ class Tp extends CI_Model {
 		$TPL = $this->load->view($tpl, FALSE, TRUE);
 		$pattern = '/{[A-Za-z0-9_]+}/'; 				// метки могут быть лишь такими
 		preg_match_all($pattern, $TPL, $MODULES); 		// находит метки в шаблоне
-		//print_r($MODULES);die();
+                
 		foreach ($MODULES[0] as $MODULE) {
 			$module = substr($MODULE,1,-1);
 			$this->common->load_module(strtolower($module));	// ВАЖНО! Чтобы грузились метки в шаблонах!
@@ -33,6 +33,7 @@ class Tp extends CI_Model {
 		} else {
 			$this->D[$label] = $this->parser->parse($tpl, $this->D, TRUE);
 		}
+                
 	}
 
 	// 
@@ -42,7 +43,7 @@ class Tp extends CI_Model {
 		$pattern2 = '/{[a-z_]+}/';
 		preg_match_all($pattern, $TPL, $MODULES); 		// находит модули
 		preg_match_all($pattern2, $TPL, $VALUES); 		// находит переменные
-
+                
 		foreach ($MODULES[0] as $MODULE) {
 			$module = substr($MODULE,1,-1);
 			if (!isset($this->D[$module])) {

@@ -18,10 +18,10 @@ class Glossary_model extends Modelbase {
 			$limit = 3;
 		
 		$sql 	= "SELECT * FROM `glossary` 
-					WHERE `glossary_status` = ? 
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC
-					LIMIT $limit_old, $limit";		
+                            WHERE `glossary_status` = ? 
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC
+                            LIMIT $limit_old, $limit";		
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}
@@ -34,15 +34,76 @@ class Glossary_model extends Modelbase {
 		$limit = 1;
 		
 		$sql 	= "SELECT `glossary_name`, `glossary_id` FROM `glossary` 
-					WHERE `glossary_status` = ?
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC
-					LIMIT $limit";		
+                            WHERE `glossary_status` = ?
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC
+                            LIMIT $limit";		
 		$rows = $this->db->query($sql, array(1));
 		$result = $rows->result_array();
 		
 		return $result;
 	}
+	
+	public function get_top_glossary() {
+		//$rows = $this->db->get($table, $number);
+		//$rows = $rows->row_array();
+		
+		$limit = 2;
+		
+		$sql 	= "SELECT * FROM `glossary` 
+                            WHERE `glossary_status` = ? 
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC
+                            LIMIT $limit";		
+		$rows = $this->db->query($sql, array(1));
+		return $rows->result_array();
+	}
+	
+        // Glossary search block characters ---------------------------------->
+        //
+	public function get_glossary_search() {
+		//$rows = $this->db->get($table, $number);
+		//$rows = $rows->row_array();
+			
+		$sql 	= "SELECT * FROM `glossarycharacter` 
+                            WHERE `glossarycharacter_status` = ? 
+                            GROUP BY `glossarycharacter_id`
+                            ORDER BY `glossarycharacter_position` ASC";		
+		$rows = $this->db->query($sql, array(1));
+		return $rows->result_array();
+	}
+	
+        
+        // Glossary filter --------------------------------------------------->
+        //
+	public function get_letter_search() {
+                $value = $this->input->post('letter_search');
+                $s = " `glossary_name` LIKE '".$value."%' ";
+                $sql = "SELECT * FROM `glossary` 
+                            WHERE `glossary_status` = ? 
+                            AND $s
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_position` ASC";		
+                $rows = $this->db->query($sql, array(1));
+		//$rows = $this->db->get($table, $number);
+		//$rows = $rows->row_array();
+		$result = $rows->result_array();
+		
+		return $result;
+	}
+        
+        
+        public function get_single_character($id) {
+                $result = array();
+                $sql 	= "SELECT * FROM `glossary_character_synh` 
+                            LEFT JOIN `glossarycharacter` ON `glossarycharacter_id` = `synh_character_id`
+                            WHERE `synh_glossary_id` = ? 
+                            ORDER BY `synh_character_id` ASC";
+		$rows = $this->db->query($sql, array($id));
+                $result = $rows->result_array();
+                
+		return $result;
+        }
 	
 	
 	
@@ -56,10 +117,10 @@ class Glossary_model extends Modelbase {
 		//$rows = $rows->row_array();
 		
 		$sql 	= "SELECT * FROM `glossary` 
-					LEFT JOIN `glossarycategory` ON `glossary_catid` = `glossarycategory_id` 
-					WHERE `glossary_status` != ? 
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC";		
+                            LEFT JOIN `glossarycategory` ON `glossary_catid` = `glossarycategory_id` 
+                            WHERE `glossary_status` != ? 
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC";		
 		$rows = $this->db->query($sql, array('-1'));
 		return $rows->result_array();
 	}
@@ -69,12 +130,12 @@ class Glossary_model extends Modelbase {
 	public function get_single($id) {
 
 		$sql 	= "SELECT * FROM `glossary` 
-					LEFT JOIN `glossarycategory` ON `glossary_catid` = `glossarycategory_id` 
-					WHERE `glossary_status` != ? 
-					AND `glossary_id` = ?
-					GROUP BY `glossary_id`
-					ORDER BY `glossary_id` DESC
-					LIMIT 1";
+                            LEFT JOIN `glossarycategory` ON `glossary_catid` = `glossarycategory_id` 
+                            WHERE `glossary_status` != ? 
+                            AND `glossary_id` = ?
+                            GROUP BY `glossary_id`
+                            ORDER BY `glossary_id` DESC
+                            LIMIT 1";
 		$rows = $this->db->query($sql, array('-1', $id));
 		return $rows->row_array();
 	}
@@ -82,9 +143,9 @@ class Glossary_model extends Modelbase {
 	
 	public function get_category() {
 		$sql 	= "SELECT * FROM `glossarycategory` 
-					WHERE `glossarycategory_status` = ? 
-					GROUP BY `glossarycategory_id`
-					ORDER BY `glossarycategory_position` ASC";
+                            WHERE `glossarycategory_status` = ? 
+                            GROUP BY `glossarycategory_id`
+                            ORDER BY `glossarycategory_position` ASC";
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}
@@ -92,9 +153,9 @@ class Glossary_model extends Modelbase {
         
 	public function get_character() {
 		$sql 	= "SELECT * FROM `glossarycharacter` 
-					WHERE `glossarycharacter_status` = ? 
-					GROUP BY `glossarycharacter_id`
-					ORDER BY `glossarycharacter_position` ASC";
+                            WHERE `glossarycharacter_status` = ? 
+                            GROUP BY `glossarycharacter_id`
+                            ORDER BY `glossarycharacter_position` ASC";
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}

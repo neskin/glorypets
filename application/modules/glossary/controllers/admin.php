@@ -17,8 +17,6 @@ class Admin extends Adminbase {
 	
 	public function index() {
 		$data['list'] = $this->glossary_model->get_list();
-		$data['list'] = tt_in_a($data['list'], 'glossary_time', false);
-		$data['category'] = $this->glossary_model->get_category();
 		$this->_render('admin/list', $data);
 	}
 
@@ -29,7 +27,7 @@ class Admin extends Adminbase {
 		
 		if ($this->form_validation->run() == FALSE) {
 			$_POST['submit'] = 0;
-			//$data['category'] = $this->glossary_model->get_category();
+			$data['category'] = $this->glossary_model->get_category();
                         $data['character'] = $this->glossary_model->get_character();
 			$this->_render('admin/new', $data);
 		} else {
@@ -51,7 +49,7 @@ class Admin extends Adminbase {
 		if ($this->form_validation->run() == FALSE) {
 			$_POST['submit'] = 0;
 			$data['single'] = $this->glossary_model->get_single($id);
-			//$data['category'] = $this->glossary_model->get_category();
+			$data['category'] = $this->glossary_model->get_category();
 			$data['character'] = $this->glossary_model->get_character();
 			$data['s_character'] = $this->glossary_model->get_s_character($id);
                         //print_r($data['s_character']); die();

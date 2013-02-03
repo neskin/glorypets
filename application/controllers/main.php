@@ -4,7 +4,7 @@
 class Main extends MX_Controller {
 	
 	public function __construct() {
-		$this->modules = array('auth','cabinet','ads','news', 'glossary'); // разрешенные модули
+		$this->modules = array('auth','cabinet','ads','news', 'glossary', 'mapping'); // разрешенные модули
 		$this->load->helper(array('html', 'form', 'url'));
 		$this->load->library('form_validation');
 	}

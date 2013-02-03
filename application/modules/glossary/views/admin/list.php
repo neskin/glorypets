@@ -11,7 +11,7 @@
 </div>
 <?inc_head(array(
 	array('Название'),
-	//array('Категория', 150),
+	array('Категория', 150),
 	array('Статус', 80),
 	array('Удалить', 80),
 ))?>
@@ -20,7 +20,7 @@
 	$list,
 	array(
 		array('<a href="'.HOSTADMIN.'glossary/edititem/%glossary_id%/">%glossary_name%</a>'),
-		//array('%glossary_category_name%', 150),
+		array('%glossarycategory_name%', 150),
 		array('<img 
 			src="'.MEDIAURL.'images/admin/status_%glossary_status%.png" 
 			mysql_table="glossary" 

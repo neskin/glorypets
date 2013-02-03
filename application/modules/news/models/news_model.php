@@ -17,10 +17,10 @@ class News_model extends Modelbase {
 			$limit = 3;
 		
 		$sql 	= "SELECT * FROM `news` 
-					WHERE `news_status` = ? 
-					GROUP BY `news_id`
-					ORDER BY `news_view` DESC
-					LIMIT $limit_old, $limit";		
+                            WHERE `news_status` = ? 
+                            GROUP BY `news_id`
+                            ORDER BY `news_view` DESC
+                            LIMIT $limit_old, $limit";		
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}
@@ -31,10 +31,10 @@ class News_model extends Modelbase {
 		$limit = 3;
 		
 		$sql 	= "SELECT * FROM `news` 
-					WHERE `news_status` = ? 
-					GROUP BY `news_id`
-					ORDER BY `news_time` DESC
-					LIMIT $limit_old, $limit";		
+                            WHERE `news_status` = ? 
+                            GROUP BY `news_id`
+                            ORDER BY `news_time` DESC
+                            LIMIT $limit_old, $limit";		
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}
@@ -51,34 +51,34 @@ class News_model extends Modelbase {
                 $befyesteday =  $today - 86400*2;
 		
 		$sql 	= "SELECT `news_name`, `news_id` FROM `news` 
-					WHERE `news_status` = ?
-					AND `news_time` >= '$today' 
-					AND `news_time` < '$today' + 86400 
-					GROUP BY `news_id`
-					ORDER BY `news_view` DESC
-					LIMIT $limit";		
+                            WHERE `news_status` = ?
+                            AND `news_time` >= '$today' 
+                            AND `news_time` < '$today' + 86400 
+                            GROUP BY `news_id`
+                            ORDER BY `news_view` DESC
+                            LIMIT $limit";		
 		$rows = $this->db->query($sql, array(1));
 		$result['today'] = $rows->result_array();
 		
 		$sql 	= "SELECT `news_name`, `news_id` FROM `news` 
-					WHERE `news_status` = ?
-					AND `news_time` >= '$yesteday' 
-					AND `news_time` < '$today' 
-					GROUP BY `news_id`
-					ORDER BY `news_view` DESC
-					LIMIT $limit";		
+                            WHERE `news_status` = ?
+                            AND `news_time` >= '$yesteday' 
+                            AND `news_time` < '$today' 
+                            GROUP BY `news_id`
+                            ORDER BY `news_view` DESC
+                            LIMIT $limit";		
 		$rows = $this->db->query($sql, array(1));
 		$result['yesteday'] = $rows->result_array();
 		//print_r($result);  die();
 		
 		
 		$sql 	= "SELECT `news_name`, `news_id` FROM `news` 
-					WHERE `news_status` = ?
-					AND `news_time` >= '$befyesteday' 
-					AND `news_time` < '$yesteday' 
-					GROUP BY `news_id`
-					ORDER BY `news_view` DESC
-					LIMIT $limit";		
+                            WHERE `news_status` = ?
+                            AND `news_time` >= '$befyesteday' 
+                            AND `news_time` < '$yesteday' 
+                            GROUP BY `news_id`
+                            ORDER BY `news_view` DESC
+                            LIMIT $limit";		
 		$rows = $this->db->query($sql, array(1));
 		$result['befyesteday'] = $rows->result_array();
 		
@@ -119,6 +119,10 @@ class News_model extends Modelbase {
                             WHERE `news_id` = ? ";
 		$this->db->query($sql, array($id));
         }
+        
+        
+        
+        
 	
 	// < ------------------ Back End ------------------ > //
 	
@@ -127,10 +131,10 @@ class News_model extends Modelbase {
 		//$rows = $rows->row_array();
 		
 		$sql 	= "SELECT * FROM `news` 
-					LEFT JOIN `news_category` ON `news_catid` = `news_category_id` 
-					WHERE `news_status` != ? 
-					GROUP BY `news_id`
-					ORDER BY `news_time` DESC";		
+                            LEFT JOIN `newscategory` ON `news_catid` = `newscategory_id` 
+                            WHERE `news_status` != ? 
+                            GROUP BY `news_id`
+                            ORDER BY `news_time` DESC";		
 		$rows = $this->db->query($sql, array('-1'));
 		return $rows->result_array();
 	}
@@ -140,12 +144,12 @@ class News_model extends Modelbase {
 	public function get_single($id) {
 
 		$sql 	= "SELECT * FROM `news` 
-					LEFT JOIN `news_category` ON `news_catid` = `news_category_id` 
-					WHERE `news_status` != ? 
-					AND `news_id` = ?
-					GROUP BY `news_id`
-					ORDER BY `news_time` DESC
-					LIMIT 1";
+                            LEFT JOIN `newscategory` ON `news_catid` = `newscategory_id` 
+                            WHERE `news_status` != ? 
+                            AND `news_id` = ?
+                            GROUP BY `news_id`
+                            ORDER BY `news_time` DESC
+                            LIMIT 1";
 		$rows = $this->db->query($sql, array('-1', $id));
 		return $rows->row_array();
 	}
@@ -153,10 +157,10 @@ class News_model extends Modelbase {
 	
 	
 	public function get_category() {
-		$sql 	= "SELECT * FROM `news_category` 
-					WHERE `news_category_status` = ? 
-					GROUP BY `news_category_id`
-					ORDER BY `news_category_position` ASC";
+		$sql 	= "SELECT * FROM `newscategory` 
+                            WHERE `newscategory_status` = ? 
+                            GROUP BY `newscategory_id`
+                            ORDER BY `newscategory_position` ASC";
 		$rows = $this->db->query($sql, array(1));
 		return $rows->result_array();
 	}

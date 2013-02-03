@@ -7,7 +7,7 @@
 <div class="white_container">
 	<form method="post" name="form" action="<?=HOSTADMIN?>glossary/newitem/" enctype="multipart/form-data">		
 		<?inc_text("glossary_name", $this->input->post('glossary_name'), "need", "Имя")?>
-		<?//inc_select("glossary_catid", mak($category, 'glossary_category_id', 'glossary_category_name'), $this->input->post('glossary_catid'), array(0, 'No'), "", "Категория<br /><i>по умолчанию \"Нет\"</i>")?>
+		<?inc_select("glossary_catid", mak($category, 'glossarycategory_id', 'glossarycategory_name'), $this->input->post('glossary_catid'), array(0, 'No'), "", "Категория<br /><i>по умолчанию \"Нет\"</i>")?>
 		<?inc_textarea("glossary_description", $this->input->post('glossary_description'), "need", "Краткое описание")?>
                 <? foreach($character as $k=>$v):?>
                 <? if(!isset($s_character[$v['glossarycharacter_id']])) {

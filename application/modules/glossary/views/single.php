@@ -1,24 +1,22 @@
 <? $v = $this->tp->D['single'] ?>
-<div class="container_left news_last">
-	<div class="news_list_last">
-		<div class="list_soc">
-			<div class="right">
-				<div class="list_author">{author}: Admin</div>
-				<div class="list_com">{comments}: <?=$v['news_comment'] ?> </div>
-				<div class="list_view">{views}: <?=$v['news_view'] ?></div>
-			</div>
-		</div>
-		<div class="list_title"><?=$v['news_category_name'] ?> - <?=$v['news_name'] ?></div>
-		<div class="list_date">{news_time}: <?=transform_time($v['news_time'], true)?></div>
-		<div class="list_img"><img src="<?='news/'.$v['news_image'] ?>" /></div>
-		<div class="list_text"><?=$v['news_text'] ?></div>
-		<div class="list_likes">
-			<div class="tags">#Тег1, #Тег2, #Тег3</div>
-			<div class="shares">Поделиться новостью:</div>
-		</div>
+<div class="container_left glossary">
+	<div class="glossary_single">
+		<div class="list_title"><a href="<?=HOST?>ru/glossary/">{glossary_single}</a> - <?=$v['glossary_name'] ?></div>
+		<div class="list_img"><img src="" /></div>
+                {MAPPING}
+		<div class="photos"></div>
+		<div class="list_text"><?=$v['glossary_text'] ?></div>
 	</div>
 </div>
-<div class="container_right">
-	{GLOSSARY_TOP}
-	{NEWS_BLOCK}
+<div class="container_right glossary gsearch">
+        <div class="container glossary_search">
+            <div class="character_block">
+            <? foreach($this->tp->D['character'] as $k=>$v):?>
+                <div class="character">
+                <?=$v['glossarycharacter_name']?>:<span><?=$v['synh_rate']?></span>
+                </div>
+            <? endforeach;?>
+            </div>
+        </div>
+	<div class="clr"></div>
 </div>

@@ -146,7 +146,7 @@ h3{
 }
 
 /* Top news ---------------------------------------------- */
-.news_top, .news_last {
+.news_top, .news_last, .glossary_search {
 	background: none;	
 }
 .news_list {
@@ -225,18 +225,17 @@ h3{
 }
 .news_list_last .list_soc {
 	width: 100%;
-	min-height: 40px;
+        display: table;
 	margin-bottom: 25px;
-	border-radius: 5px;
 	clear: both;
 	border: 1px solid #000;
 }
-.news_list_last .list_soc .right{
-	position: absolute;
-	right: 0;
+.news_list_last .list_soc .left{
+	left: 0;
 }
-.news_list_last .list_view, .news_list_last .list_com, .news_list_last .list_author {
-	float: right;
+.news_list_last .list_view, .news_list_last .list_com, .news_list_last .list_author,
+.news_list_last .vote_good, .news_list_last .vote_bad, .news_list_last .vote_title {
+	float: left;
 	margin: 10px;
 }
 .news_list_last .list_likes {
@@ -251,6 +250,131 @@ h3{
 }
 
 
+/* Glossary ---------------------------------------------- */
+.glossary {
+	background: none;
+        border-bottom: 1px solid #e9e9e9;
+}
+.glossary_list {
+	position: relative;
+	float :left;
+	width: 28%;
+	padding: 40px 25px 0px;
+        margin-bottom: 25px;
+}
+
+.glossary_list .list_title {
+	position: relative;
+	width: 100%;
+	display: block;
+	margin-bottom: 20px;
+}
+.glossary_list .list_img {
+	position: relative;
+	margin-bottom: 20px;
+	width: 100%;
+	height: 160px;
+	display: block;
+	overflow: hidden;
+} .glossary_list .list_img img {
+	width: 100%;
+}
+.alphabet form {
+    position: absolute;
+}
+
+/* Glossary single ---------------------------------------------- */
+.glossary_single {
+	position: relative;
+	float :left;
+	padding: 20px 25px 200px;
+        margin-bottom: 25px;
+}
+
+.glossary_single .list_img {
+	position: relative;
+	margin-bottom: 20px;
+	width: 50%;
+	min-height: 160px;
+	display: block;
+	overflow: hidden;
+}
+
+.glossary_single .photos {
+    width: 100%;
+    margin: 20px 0px;
+    border: 1px solid #000;
+    min-height: 370px
+}
+
+/* Glossary search ----------------------------------------------- */
+.gsearch .glossary_list {
+        width: 38%;
+}
+.gsearch .glossary_search {
+    border: none;
+    border-left: 2px solid #999;
+}
+/* Glossary letter search ---------------------------------------------- */
+.search_letter_block {
+    margin-bottom: 25px;
+}
+.search_letter_block a { 
+    color: blue;
+}
+.alphabet_search {
+    border: 1px solid #000;
+    display: table;
+    width: 80%;
+    margin: auto;
+}
+.alphabet {
+    margin: 5px 25px;
+    width: 100%;
+}
+.alphabet span {
+    margin-right: 20px;
+}
+#search_by_letter a {
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+} #search_by_letter a:hover {
+    text-decoration: underline;
+    color: blue;
+} #search_by_letter a.active {
+    text-decoration: underline;
+    color: blue;
+}
+
+/* Glossary search block ---------------------------------------------- */
+.glossary_search {
+    padding: 20px 25px;
+    width: auto;
+    border: 1px solid #000;
+}
+.glossary_search .page_title {
+    margin: 0px 0px 15px;	
+}
+.glossary_search .character {
+    margin-bottom: 20px;
+}
+.glossary_search .character span {
+    position: relative;
+    right: 20%;
+    float: right;
+}
+.glossary_search .character a {
+    display: inline-block;
+    margin: 0px 1px;
+}
+.glossary_search .category_block {
+    margin-bottom: 20px;
+}
+.category_block select {
+    margin: 0;
+    width: 80%;
+}
 
 /* More buttons ---------------------------------------------- */
 .more {
@@ -295,6 +419,15 @@ h3{
 .news_block .block_text {
 	
 }
+
+/* Add Classes ------------------------------------------------- */
+.radius {
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
 
 /* Media ------------------------------------------------- */
 @media screen and (max-width: 1010) {

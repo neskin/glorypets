@@ -21,7 +21,7 @@
 	$list,
 	array(
 		array('<a href="'.HOSTADMIN.'news/edititem/%news_id%/">%news_name%</a>'),
-		array('%news_category_name%', 150),
+		array('%newscategory_name%', 150),
 		array('%news_time%', 200),
 		array('<img 
 			src="'.MEDIAURL.'images/admin/status_%news_status%.png" 

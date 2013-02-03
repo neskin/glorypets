@@ -376,11 +376,16 @@ $config['admin_def_module'] = 'user';
 */
 $config['leftside_menu'] = array(
 	array('Пользователи', HOSTADMIN.'user/', array()),
-	array('Новости', HOSTADMIN.'news/', array()),
-	array('Глосарий', HOSTADMIN.'glossary/', array()),
-	array('Категории', '', array(
-		array('Категории новостей', HOSTADMIN.'category/catlist/news/', array()),
-	)),
+	array('Новости', '', array(
+                array('Новости', HOSTADMIN.'news/', array()),
+                array('Рубрики новостей', HOSTADMIN.'category/catlist/news/', array()),
+        )),
+	array('Глосарий', '', array(
+                array('Статьи глосария', HOSTADMIN.'glossary/', array()),
+                array('Виды животных', HOSTADMIN.'category/catlist/glossary/', array()),
+                array('Характеристики животных', HOSTADMIN.'character/charlist/glossary/', array()),
+                array('Маппинг фотографий', HOSTADMIN.'mapping/', array()),
+        )),
 );
 
 /* End of file config.php */

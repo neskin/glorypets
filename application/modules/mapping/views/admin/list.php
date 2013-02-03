@@ -1,5 +1,5 @@
 <!-- <div class="left_align_container start">
-	<form name="sort" method="post" action="<?=HOSTADMIN?>glossarymapping/">
+	<form name="sort" method="post" action="<?=HOSTADMIN?>mapping/">
 			<? //inc_select("groupid", mak($glossarymappinggroups, 'glossarymappinggroup_id', 'glossarymappinggroup_name'), $this->input->post('groupid'), null, "", "Сортировка по группе <br /> <i>(по-умолчанию: \"Администраторы\")</i>", "")?>
 		<input type="hidden" name="submit" value="1" />
 		<button onClick="javascript: document.forms['sort'].submit(); return false;" name="submit_form" value="1">Отсортировать</button><br /><br />
@@ -7,11 +7,11 @@
 </div>-->
 
 <div class="right_align_container start">
-	<button onClick="javascript: window.location=HOST+'glossarymapping/newitem/'">Добавить&nbsp;запись</button>
+	<button onClick="javascript: window.location=HOST+'mapping/newitem/'">Добавить&nbsp;запись</button>
 </div>
 <?inc_head(array(
-	array('Название'),
-	array('Статья', 150),
+	array('Статья'),
+	array('Краткое описание', 250),
 	array('Статус', 80),
 	array('Удалить', 80),
 ))?>
@@ -19,8 +19,8 @@
 <? $this->load->view('admin/elementlist', inc_list(
 	$list,
 	array(
-		array('<a href="'.HOSTADMIN.'glossarymapping/edititem/%glossarymapping_id%/">%glossarymapping_name%</a>'),
-		array('%glossary_name%', 150),
+		array('<a href="'.HOSTADMIN.'mapping/edititem/%glossarymapping_id%/">%glossary_name%</a>'),
+		array('%glossarymapping_name%', 250),
 		array('<img 
 			src="'.MEDIAURL.'images/admin/status_%glossarymapping_status%.png" 
 			mysql_table="glossarymapping" 

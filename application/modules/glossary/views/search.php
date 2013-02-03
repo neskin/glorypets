@@ -16,30 +16,18 @@
             </div>
         </div>
 </div>
-<div class="container glossary">
-	<? foreach($this->tp->D['glossary_top'] as $k=>$v): ?>
+<div class="container_left glossary gsearch">
+	<div class="page_title">{all_glossary}</div>
+	<? foreach($this->tp->D['glossary'] as $k=>$v): ?>
 	<div class="glossary_list">		
 		<div class="list_img"><a><img src="<?=MEDIAURL?>" /></a></div>
 		<a href="<?=HOST?>ru/glossary/single/<?=$v['glossary_id']?>/" class="list_title"><?=$v['glossary_name'] ?></a>
 		<div class="list_text"><?=$v['glossary_description'] ?></div>
 	</div>
 	<? endforeach; ?>
-        <div class="glossary_list">		
-               {GLOSSARY_SEARCH}
-	</div>
 	<div class="clr"></div>
 </div>
-<div class="container glossary">
-	<div class="page_title">{all_glossary}</div>
-	<? foreach($this->tp->D['glossary'] as $k=>$v): ?>
-	<div class="glossary_list">		
-		<div class="list_img"><a><img src="<?=MEDIAURL?>" /></a></div>
-		<a class="list_title"><?=$v['glossary_name'] ?></a>
-		<div class="list_text"><?=$v['glossary_description'] ?></div>
-	</div>
-	<? endforeach; ?>
+<div class="container_right glossary gsearch">
+        {GLOSSARY_SEARCH}
 	<div class="clr"></div>
-	<div class="container more">
-		<div id="more_top_glossary" class="more_btn"></div>
-	</div>
 </div>

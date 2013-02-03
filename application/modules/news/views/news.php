@@ -24,7 +24,7 @@
 		<div class="list_img"><a href="<?=HOST?>ru/news/single/<?=$v['news_id']?>/"><img src="<?='news/'.$v['news_image'] ?>" /></a></div>
 		<div class="list_descr"><?=substr($v['news_description'], 0, 300); ?></div>
 		<a href="<?=HOST?>ru/news/single/<?=$v['news_id']?>/" class="list_read">Читать дальше...</a>
-		<div class="list_soc">
+		<div class="list_soc radius">
 			<div class="left">
 				<div id="votenews<?=$v['news_id']?>" class="list_vote">
                                         <div data-id="<?=$v['news_id']?>" data-rate="1" class="vote_good vote">good</div>
