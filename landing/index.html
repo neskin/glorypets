@@ -52,12 +52,26 @@
                 margin-top: 180px;
 
             }
+            
+            #social_buttons{
+                margin-left:240px;
+                margin-top: 10px;
+                width: 350px;
+            }
 
         </style>
 
     </head>
 
     <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=514606328571584";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         <div id="main">
 
             <div class="bgimg">
@@ -68,6 +82,20 @@
 
                     <p>Этой весной <strong>Glorypets</strong> ответит на любой вопрос. Мы поможем выбрать питомца твоей мечты, покажем лучшие места, где провести с ним время, а также найдем для вас отличных приятелей.</p>
                 </div>
+                <div id="social_buttons">
+                    
+                    <div class="fb-like" style="display:inline-block; top:-4px;" data-href="http://www.facebook.com/glorypets.ru" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+                    
+                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?78"></script>
+<div style="display: inline-block; width:200px; margin-left: 10px;">
+<!-- VK Widget -->
+<div id="vk_subscribe" style="display: inline-block;"></div>
+<script type="text/javascript">
+VK.Widgets.Subscribe("vk_subscribe", {soft: 1}, -49583585);
+</script>
+                    
+                </div>
+                    </div>
             </div>
 
         </div>
